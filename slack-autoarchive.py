@@ -159,8 +159,8 @@ class ChannelReaper(object):
     print(stdout_message)
 
     if not self.dry_run:
-      channel_message = alert % self.days_inactive
-      self.send_channel_message(channel['id'], channel_message)
+      # channel_message = alert % self.days_inactive
+      # self.send_channel_message(channel['id'], channel_message)
       payload        = {'channel': channel['id']}
       self.slack_api_http(api_endpoint=api_endpoint, payload=payload)
       logging.info(stdout_message)
