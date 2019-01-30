@@ -5,13 +5,16 @@ install:
   - pip install -r requirements.txt
 
 stages:
-  - build
-  - archive
+  - name: build
+  - name: archive
+    if: branch = master
+
 
 jobs:
   include:
     - stage: build
       script: SLACK_TOKEN=${SLACK_TOKEN} DRY_RUN=true python slack-autoarchive.py
     - stage: archive
-      script: SLACK_TOKEN=${SLACK_TOKEN} DRY_RUN=true python slack-autoarchive.py
-      if: branch = master
+      script: echo 'master'
+      # SLACK_TOKEN=${SLACK_TOKEN} DRY_RUN=true python slack-autoarchive.py
+      
